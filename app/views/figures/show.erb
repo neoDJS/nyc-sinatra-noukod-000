@@ -1,0 +1,26 @@
+<h1>Historcal Figure Page</h1>
+
+<h2><%=@figure.name%></h2>
+
+<ul>
+  <li>
+    <h2>Titles</h2>
+    <ul>
+      <% @figure.titles.each do |title| %>
+        <li><%=title.name%></li>
+      <% end %>
+    </ul>
+  </li>
+
+  <li>
+    <h2>Landmarks</h2>
+    <ul>
+      <% @figure.landmarks.each do |land| %>
+        <li><a href="/landmarks/<%=land.id%>"><%=land.name%></a></li>
+      <% end %>
+    </ul>
+  </li>
+</ul>
+
+<a class="button" href="/figures/<%= @figure.id %>/edit">Edit Figure</a>
+<a class="button" href="/figures">Figures</a>
