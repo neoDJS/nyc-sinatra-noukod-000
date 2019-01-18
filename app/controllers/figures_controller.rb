@@ -38,7 +38,7 @@ puts params[:figure]
       @figure = Figure.find(params[:id])
       @figure.update(params[:figure])
       @figure.titles << Title.find_or_create_by(params[:title]) if !params[:title][:name].empty?
-      @figure.landmarks << Landmark.find_or_create_by(params[:landmark]) if !params[:landmark][:name].empty?
+      @figure.landmarks << Landmark.create(params[:landmark]) if !params[:landmark][:name].empty?
       @figure.save
       redirect "/figures/#{@figure.id}"
   end
