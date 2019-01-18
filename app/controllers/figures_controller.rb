@@ -14,6 +14,7 @@ class FiguresController < ApplicationController
   post '/figures' do
     @figure = Figure.create(params[:figure])
     @figure.titles << Title.find_or_create_by(params[:title]) if !params[:title][:name].empty?
+    puts params[:landmark]
     @figure.landmarks << Landmark.find_or_create_by(params[:landmark]) if !params[:landmark][:name].empty?
     @figure.save
     redirect "/figures/#{@figure.id}"
@@ -34,7 +35,7 @@ class FiguresController < ApplicationController
   patch '/figures/:id' do
       params[:figure][:title_ids] = [] if !params[:figure].keys.include?(:title_ids)
       params[:figure][:landmark_ids] = [] if !params[:figure].keys.include?(:landmark_ids)
-      
+
       @figure = Figure.find(params[:id])
       @figure.update(params[:figure])
       @figure.titles << Title.find_or_create_by(params[:title]) if !params[:title][:name].empty?
