@@ -3,7 +3,7 @@
 <!-- add content here -->
 <ul>
   <% @landmarks.each do |land|%>
-    <li><a href="/landmarks/<%=land.id%>"><%=land.name%> - <%=land.name%></a></li>
+    <li><a href="/landmarks/<%=land.id%>"><%=land.name%> - <%=land.year_completed%></a></li>
   <% end %>
 </ul>
 
