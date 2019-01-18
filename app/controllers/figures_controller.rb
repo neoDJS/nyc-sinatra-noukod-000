@@ -34,7 +34,7 @@ class FiguresController < ApplicationController
   patch '/figures/:id' do
       params[:figure][:title_ids] = [] if !params[:figure].keys.include?(:title_ids)
       params[:figure][:landmark_ids] = [] if !params[:figure].keys.include?(:landmark_ids)
-puts params[:figure]
+      
       @figure = Figure.find(params[:id])
       @figure.update(params[:figure])
       @figure.titles << Title.find_or_create_by(params[:title]) if !params[:title][:name].empty?
